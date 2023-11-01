@@ -1,5 +1,6 @@
 const express = require('express')
 const bcryptjs = require('bcryptjs')
+const jsonwebtoken = require('jsonwebtoken')
 
 const router = express.Router()
 
@@ -47,7 +48,9 @@ router.post('/login',async(req,res)=>{
         return res.status(400).send({message: 'Password is incorrect.'})
     }
 
-    res.send('successfully logged in!')
+    //generate auth token after successful validation
+    const token = jsonwebtoken.sign({_id:user.id} , process.env.TOKEN_SECRET)
+    res.header('auth-token',token).send({'auth-token':token}) 
 })
 
 module.exports = router
