@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use('/api/film',filmRoute)
 app.use('/api/user',authRoute)
 
-mongoose.connect(process.env.DB_URL).then(()=>{
+mongoose.connect("mongodb+srv://mishalzulfiqar2911:Mishal.2911@minifilmcluster.zykjzjp.mongodb.net/MiniFilm?retryWrites=true&w=majority").then(()=>{
     console.log("Connected to database")
 })
 
