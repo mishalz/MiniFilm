@@ -6,7 +6,7 @@ const verifyToken = (req,res,next)=>{
         return res.status(401).send({message:"User is not logged in!"})
     }
     try{
-        const verified = jsonwebtoken.verify(token,"qwrweuns28349")
+        const verified = jsonwebtoken.verify(token,process.env.TOKEN_SECRET)
         req.user = verified
         next()
 
