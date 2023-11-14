@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const verifyToken = require("../middleware/verifyToken")
-const Film = require('../models/film')
+const Film = require('../models/Film')
 
 router.get('/',verifyToken,async(req,res)=>{
     try{
